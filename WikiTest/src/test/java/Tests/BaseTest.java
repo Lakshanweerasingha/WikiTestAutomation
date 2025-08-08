@@ -17,9 +17,9 @@ public class BaseTest {
 		public void setup() throws MalformedURLException {
 			UiAutomator2Options options = new UiAutomator2Options()
 					.setPlatformName("Android")
-	                .setDeviceName("emulator-5554")
+	                .setDeviceName("vivo Y97")
 	                .setAppPackage("org.wikipedia")
-	                .setAppActivity(".main.MainActivity")
+	                .setAppActivity("org.wikipedia.main.MainActivity")
 	                .setAutomationName("UiAutomator2");
 			
 			driver = new AndroidDriver(new URL("http://localhost:4723"), options);

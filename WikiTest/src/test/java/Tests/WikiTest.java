@@ -1,28 +1,29 @@
 package Tests;
 
-	import io.appium.java_client.android.AndroidDriver;
-	import io.appium.java_client.android.options.UiAutomator2Options;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-	import org.testng.annotations.AfterClass;
-	import org.testng.annotations.BeforeClass;
+import Pages.ArticlePage;
+import Pages.HomePage;
+import Pages.SearchPage;
 
-	public class WikiTest {
-		
-		protected AndroidDriver driver;
-		
-		@BeforeClass
-		public void setup() {
-			UiAutomator2Options options = new UiAutomator2Options()
-					.setPlatformName("Android")
-	                .setDeviceName("emulator-5554") // Use your device ID
-	                .setAppPackage("org.wikipedia")
-	                .setAppActivity(".main.MainActivity")
-	                .setAutomationName("UiAutomator2");
+public class WikiTest extends BaseTest{
+	
+		@Test
+		public void WikiSearchText() throws InterruptedException {
+			HomePage homepage = new HomePage(driver);
+			SearchPage searchPage = new SearchPage(driver);
+			ArticlePage articlePage = new ArticlePage(driver);
 			
-			driver = new AndroidDriver(new URL("http://localhost:4723"), options);
+			homepage.tapSearch();
+			
+			searchPage.search("Appium");
+			searchPage.selectFirstResult();
+			
+			String title = articlePage.getTitle();
+			Assert.assertTrue(title.toLowerCase().contains("Appium"));
+			
+			articlePage.scrollToElementByText(title);
 		}
-
-	}
-
 	
 }
