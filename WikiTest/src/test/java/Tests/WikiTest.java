@@ -20,10 +20,12 @@ public class WikiTest extends BaseTest{
 			searchPage.search("Appium");
 			searchPage.selectFirstResult();
 			
+			articlePage.close();
 			String title = articlePage.getTitle();
-			Assert.assertTrue(title.toLowerCase().contains("Appium"));
+			Assert.assertTrue(title.toLowerCase().contains("appium"));
 			
-			articlePage.scrollToElementByText(title);
+			articlePage.scrollToElementByText("References");
 		}
 	
 }
+
