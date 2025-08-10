@@ -20,7 +20,7 @@ public class SearchPage {
 	}
 	
 	private final By searchInput = AppiumBy.id("org.wikipedia:id/search_src_text");
-	private final By firstResult = AppiumBy.xpath("(//android.widget.TextView)[2])");
+	private final By firstResult = AppiumBy.xpath("(//android.widget.TextView)[2]");
 
 
 	public void search(String query) {
@@ -33,3 +33,4 @@ public class SearchPage {
         firstResultElement.click();
 	}
 }
+
